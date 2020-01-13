@@ -42,6 +42,25 @@ service sshd restart #重启 sshd 服务
 
 ---
 
+#### ssh 连接超时配置
+
+把 `/etc/ssh/sshd_config` 文件中 `ClientAliveInterval` 、`ClientAliveCountMax` 两个配置修改为
+
+```
+ClientAliveInterval 60 #服务端向客户端发送信息的间隔时间，单位为秒
+ClientAliveCountMax 3  #服务端发送信息的总次数
+```
+
+`CentOs` 直接修改即可，`Ubuntu` 默认没有需要新增。
+
+重启服务
+
+```
+systemctl restart sshd
+```
+
+---
+
 #### 禁止 ping 服务器配置
 
 第一种方法：临时生效配置
@@ -90,6 +109,7 @@ Host test2           #自定义名称
 HostName ip          #服务器 ip 地址
 User nick            #用户名
 Port 22228           # ssh 端口，自定义端口，修改为指定端口号
+IdentityFile /your/path/ # 密钥文件地址，要绝对路径
 ```
 
 连接方式
@@ -97,5 +117,24 @@ Port 22228           # ssh 端口，自定义端口，修改为指定端口号
 ```
 ssh test1 #如果配置了公私钥就直接登录，没有的话输入密码登录
 ```
+
+---
+
+#### 修改主机名
+
+临时生效，重启服务器会还原
+
+```
+hostname ubuntu-1604
+```
+
+永久生效
+
+1. 修改 `/etc/hostname` 文件中的名称
+2. 修改 `/etc/hosts` 文件中的旧名称，或者新添加一条 `127.0.0.1 ubuntu-1604`
+
+> 适用于 `Ubuntu 16.04` 和 `CentOS 7` 以上版本
+
+
 
 

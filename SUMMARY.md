@@ -24,7 +24,7 @@
 * [grep-sed-awk](grep-sed-awk.md)
 
 ## 网络与系统资源
-* [netstat-system](netstat-system.md)
+* [network-system](network-system.md)
 
 ## 打包压缩相关
 * [tar-zip-gzip-bzip2-xz](tar-zip-gzip-bzip2-xz.md)	
@@ -57,6 +57,9 @@
 ## 版本控制器
 * [Git](git.md)
 
+## 虚拟化
+* [Docker](docker.md)
+
 ## 插件工具
 * [工具](tool.md)	
 
@@ -64,11 +67,18 @@
 * [Shell](shell.md)	
 
 ## 实用 shell 例子
-* [demo](demo.md)	
+* [demo](demo.md)
+
+## 性能优化
+* [平均负载](stress-sysstat-mpstat-pidstat-watch-uptime.md)
+* [CPU 上下文切换](cpu-context.md)
+* [CPU 使用率过高](cpu-used.md)
+* [不可中断进程和僵尸进程](zombie-process.md)
 
 ## 参考资料
 * [书籍](http://billie66.github.io/TLCL/book/)	
-* [网站](http://www.ywnds.com/)
-* [网站](http://man.linuxde.net/)
+
+## 贡献指南
+* [贡献](CONTRIBUTING.md)
 
 

@@ -12,6 +12,7 @@
         "website": "styles/website.css"
     },
     "plugins": [
+		"back-to-top-button",
         "favicon",
         "anchors",
         "3-ba",
@@ -25,11 +26,16 @@
         "sharing-plus",
         "search",
         "search-pro",
-        "disqus"
+        "page-footer-ex",
+        "copy-code-button",
+        "advanced-emoji"
     ],
     "pluginsConfig": {
-        "disqus": {
-            "shortName": "gitbook-linux"
+        "page-footer-ex": {
+            "copyright": "[Nick](https://github.com/nick233333)",
+            "markdown": true,
+            "update_label": "<i>上次更新</i>",
+            "update_format": "YYYY-MM-DD HH:mm:ss"
         },
         "favicon": {
             "shortcut": "/images/favicon.ico",

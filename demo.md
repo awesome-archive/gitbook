@@ -22,6 +22,27 @@ fi
 
 ---
 
+#### 检测指定服务是否正常运行
+
+新建文件写入以下内容
+
+```
+#!/usr/bin/env bash
+
+read name
+pgrep $name > /dev/null
+if [ $? -gt 0 ];then
+    echo "`date` $name is stop" >> ~/mysql_listen.log
+    systemctl $name mysql
+else
+    echo "`date` $name running" >> ~/mysql_listen.log
+fi
+```
+
+给脚本添加执行权限后运行，输入服务名称即可
+
+---
+
 #### 备份数据库
 
 新建文件 `vim ~/mysqldump.sh` 写入以下内容

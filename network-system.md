@@ -49,8 +49,8 @@ top #查看资源占用比
 
 第一行：系统当前时间 系统持续时间 登录用户1,5,15分钟之前的平均负载
 第二行：进程总数
-第三行：CPU占用率 %id	空闲百分比
-第四行：内存使用： 总共 使用 空闲 缓存
+第三行：CPU占用率 %id 空闲百分比
+第四行：内存使用： 总共 空闲 使用 缓存
 第五行：swap使用
 
 top -p 6297 #查看指定 pid 信息
@@ -89,7 +89,30 @@ pstree -p #显示 PID 的进程树
 
 ```
 lsof -i:22 #查看 22 端口打开的进程文件
+
+lsof -i 4 #查看 IPv4 的进程文件
+
+lsof -i 6 #查看 IPv6 的进程文件
+
+lsof -i TCP #查看 TCP 进程文件
+
+lsof -i UDP #查看 UDP 进程文件
+
+lsof -i -sTCP:LISTEN #查看监听 TCP 的进程
+
+lsof -i:80 -sTCP:LISTEN #查看监听 80 端口的 TCP 的进程
+ 
+lsof -t #查看进程 id 列表
+
+lsof -p 470 #查看知道进程 id 的文件
+
+lsof -u nick #查看指定用户进程文件
+
+lsof -u ^nick #查看排除指定用户的进程文件
+
 ```
+
+补充：`lsof` 命令显示内容分别为：进程的名称、进程 id 、用户名称、文件描述符、类型、设备、大小、节点（节点磁盘上的标识）、文件名称
 
 #### kill 命令
 
@@ -131,7 +154,7 @@ ifconfig  #查看网卡信息
 ```
 route #查看路由
 
-route -n  #查看网关
+route -n #查看网关
 ```
 
 #### env 命令
@@ -320,4 +343,92 @@ bg 1 #将任务编号为 1 调到后台运行
 ```
 fg 1 #将任务编号为 1 调到前台运行
 ```
+
+#### pgrep 命令
+
+```
+pgrep nginx #查看 nginx 进程
+
+pgrep -l nginx #查看 nginx 进程名称
+```
+
+#### vmstat 命令
+
+```
+vmstat 2  #每 2 秒打印一次系统内存使用情况
+
+vmstat 2 6 #每 2 秒打印一次系统内存使用情况，打印 6 次退出
+
+vmstat -t 1 5 #1 秒打印一次，打印 5次 ，添加时间戳
+
+
+Procs（进程）:
+    r: 运行队列中进程数量
+    b: 等待IO的进程数量
+Memory（内存）:
+    swpd: 使用虚拟内存大小
+    free: 可用内存大小
+    buff: 用作缓冲的内存大小
+    cache: 用作缓存的内存大小
+Swap:
+    si: 每秒从交换区写到内存的大小
+    so: 每秒写入交换区的内存大小
+    IO：（现在的Linux版本块的大小为1024bytes）
+    bi: 每秒读取的块数
+    bo: 每秒写入的块数
+system：
+    in: 每秒中断数，包括时钟中断
+    cs: 每秒上下文切换数
+CPU（以百分比表示）
+    us: 用户进程执行时间(user time)
+    sy: 系统进程执行时间(system time)
+    id: 空闲时间(包括IO等待时间)
+    wa: 等待IO时间
+```
+
+#### vnstat 命令
+
+```
+
+```
+
+#### iostat 命令
+
+```
+
+```
+
+#### iftop 命令
+
+```
+
+```
+
+#### iotop 命令
+
+```
+
+```
+
+#### tcpdump 命令
+
+```
+
+```
+
+#### lscpu 命令
+
+```
+lscpu # 查看 cpu 信息 
+```
+
+补充： 与 `cat /proc/cpuinfo` 类似
+
+#### visudo 命令
+
+```
+visudo # 快速编辑 /etc/sudoers 文件
+```
+
+补充：默认编辑器为 `nano` ，修改为 `vim` 执行 `sudo update-alternatives --config editor` 弹出选项，选择 `vim.tiny` 按回车键即可
 
